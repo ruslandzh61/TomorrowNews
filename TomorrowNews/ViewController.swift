@@ -41,11 +41,11 @@ class ViewController: UIViewController {
         print("setup")
         var controllerArray : [UIViewController] = []
         print(ChannelCatalogAPI.shared.get())
-        for category in ChannelCatalogAPI.shared.get() {
-            /*let controller : CategoryCollectionViewController = CategoryCollectionViewController(nibName: "CategoryCollectionViewController", bundle: nil)*/
+        for channel in ChannelCatalogAPI.shared.get() {
+            /*let controller : channelCollectionViewController = channelCollectionViewController(nibName: "channelCollectionViewController", bundle: nil)*/
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "FeedCollectionViewController") as! FeedCollectionViewController
-            controller.title = category.name
-            controller.category_id = category.id
+            controller.title = channel.name
+            controller.channel_id = channel.id
             controllerArray.append(controller)
         }
         

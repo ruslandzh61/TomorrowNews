@@ -17,6 +17,8 @@ struct Article: Hashable {
     let text: String
     let summary: String
     let feed: Int
+    let publisherName: String
+    let publisherLogo: String?
     
     var description: String { return "Article: \(url) \(title)" }
     
@@ -41,9 +43,11 @@ extension Article {
             let text = json["text"] as? String,
             let dateStr = json["date"] as? String?,
             let summary = json["summary"] as? String,
-            let feed = json["feed_id"] as? Int
-            else {
-                return nil
+            let feed = json["feed_id"] as? Int,
+            let publisherLogo = json["publisher_logo"] as? String?,
+            let publisherName = json["publisher_name"] as? String
+        else {
+            return nil
         }
         if dateStr != nil {
             let date = dateFor.date(from: dateStr!)
@@ -59,5 +63,7 @@ extension Article {
         self.text = text
         self.summary = summary
         self.feed = feed
+        self.publisherLogo = publisherLogo
+        self.publisherName = publisherName
     }
 }

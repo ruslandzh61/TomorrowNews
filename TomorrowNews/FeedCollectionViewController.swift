@@ -14,6 +14,8 @@ import AVFoundation
 
 class ArticleCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var publisherNameLabel: UILabel!
+    @IBOutlet weak var publisherLogoImageView: UIImageView!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
@@ -30,13 +32,13 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.gray
     }
     
-    func bind(date: Date?, title: String, summary: String) {
+    func setup(date: Date?, title: String, summary: String, publisherName: String) {
         dateLabel.text = date?.timeAgoDisplay() ?? ""
         titleLabel.text = title
         summaryLabel.text = summary
+        publisherNameLabel.text = publisherName
     }
 }
 
@@ -47,10 +49,10 @@ class FeedCollectionViewController: UICollectionViewController {
     
    // var imageHandler: ImageHandler = ImageHandler()
     var feeder = ArticleListAPI(type: .channel)
-    var category_id = 0
+    var channel_id = 0
     let cellIdentifier = "ArticleCollectionViewCell"
     var params = ["format": "json", "category": ""]
-    var personalizedParams = ["format": "json", "category": "", "user": ""]
+    var personalizedParams = ["format": "json", "channel": ""]
     var indexPathSelected = 0
     
     override func viewDidLoad() {
@@ -58,7 +60,6 @@ class FeedCollectionViewController: UICollectionViewController {
         collectionView?.isPagingEnabled = true
         
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.gray
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         //self.navigationController?.navigationBar.shadowImage = UIImage()
         //navigationController?.navigationBar.isTranslucent = false
@@ -80,21 +81,21 @@ class FeedCollectionViewController: UICollectionViewController {
         
         if User.shared.uid == nil {
             print("user is nil")
-            params["category"] = String(category_id)
+            params["category"] = String(channel_id)
             feeder.load(params: params, isPersonalized: false,
                                 completionHandlerForUI: { () in
                 self.collectionView?.reloadData()
                 print("reload")
             })
         } else {
-            personalizedParams["category"] = String(category_id)
+            personalizedParams["channel"] = String(channel_id)
             personalizedParams["user"] = String(User.shared.uid!)
             feeder.load(params: personalizedParams, isPersonalized: true,
                                 completionHandlerForUI: { () in
                 self.collectionView?.reloadData()
             })
         }
-        print("\(self.category_id) feed collection view loaded")
+        print("\(self.channel_id) feed collection view loaded")
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -180,10 +181,12 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
                 }
                 
                 let url = URL(string: a.top_image!)
-                
-                cell.itemImageView.kf.setImage(with: url )
-                //if let image = ImageCache.imageCache.object(forKey: a.top_image! as AnyObject) {
-                cell.bind(date: a.date, title: a.title, summary: a.summary)
+                if a.publisherLogo != nil {
+                    let publisherLogoRUL = URL(string: a.publisherLogo!)
+                    cell.publisherLogoImageView.kf.setImage(with: publisherLogoRUL)
+                }
+                cell.itemImageView.kf.setImage(with: url)
+                cell.setup(date: a.date, title: a.title, summary: a.summary, publisherName: a.publisherName)
             }
         }
         
