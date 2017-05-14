@@ -17,7 +17,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Dqo-zM-z3X">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <gestureRecognizers/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Wh-FU-4Fm" customClass="AnimatedCollectionViewLayout" customModule="AnimatedCollectionViewLayout">
                             <size key="itemSize" width="374" height="603"/>
@@ -83,7 +83,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-XU-5Zb">
-                                            <rect key="frame" x="81" y="372" width="277" height="21.5"/>
+                                            <rect key="frame" x="81" y="372" width="277" height="22"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="1 week ago">
                                                     <attributes>
@@ -117,6 +117,7 @@
                                         </label>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="VHz-vG-iF7" secondAttribute="trailing" constant="8" id="0IK-yY-uwf"/>
@@ -411,7 +412,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="myW-XB-O8d" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="JTb-0c-xlY"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="H8i-UK-hNe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H8i-UK-hNe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -427,7 +428,7 @@
         <!--Channels-->
         <scene sceneID="YDv-Lf-Hls">
             <objects>
-                <viewController id="Zav-He-iwj" sceneMemberID="viewController">
+                <viewController id="Zav-He-iwj" customClass="ChannelsViewController" customModule="TomorrowNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Igq-ha-QLT"/>
                         <viewControllerLayoutGuide type="bottom" id="9BJ-Cd-jgV"/>
@@ -448,21 +449,32 @@
                                 </segments>
                                 <color key="tintColor" red="0.64764815409999998" green="0.082055581799999999" blue="0.06906917487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="showComponent:" destination="eLg-WX-Ftz" eventType="valueChanged" id="0ds-qC-q7M"/>
+                                    <action selector="showComponent:" destination="Zav-He-iwj" eventType="valueChanged" id="JNr-Os-vgn"/>
                                 </connections>
                             </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzW-6n-Ptk">
+                                <rect key="frame" x="0.0" y="65" width="375" height="525"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CzW-6n-Ptk" firstAttribute="centerX" secondItem="NLV-hG-Y6O" secondAttribute="centerX" id="Chz-RW-hgR"/>
                             <constraint firstItem="uEQ-fV-edy" firstAttribute="top" secondItem="Igq-ha-QLT" secondAttribute="bottom" constant="8" id="NMy-Wq-Ko0"/>
+                            <constraint firstItem="9BJ-Cd-jgV" firstAttribute="top" secondItem="CzW-6n-Ptk" secondAttribute="bottom" constant="28" id="PBe-dh-sa7"/>
                             <constraint firstItem="uEQ-fV-edy" firstAttribute="centerX" secondItem="NLV-hG-Y6O" secondAttribute="centerX" id="Ze8-gh-UMM"/>
+                            <constraint firstItem="CzW-6n-Ptk" firstAttribute="width" secondItem="NLV-hG-Y6O" secondAttribute="width" id="i8Q-jJ-C7D"/>
+                            <constraint firstItem="CzW-6n-Ptk" firstAttribute="top" secondItem="uEQ-fV-edy" secondAttribute="bottom" constant="8" id="jtM-I4-90J"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Channels" image="News-50.png" id="hrS-zt-qDH"/>
+                    <connections>
+                        <outlet property="containerView" destination="CzW-6n-Ptk" id="7Zl-pl-v1j"/>
+                        <outlet property="segmentedController" destination="uEQ-fV-edy" id="Yve-aT-tV7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKl-mN-kjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="816"/>
+            <point key="canvasLocation" x="8.8000000000000007" y="1235.5322338830586"/>
         </scene>
         <!--Collections-->
         <scene sceneID="Hpo-cD-VZP">
@@ -481,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-am-LQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="365" y="1516"/>
+            <point key="canvasLocation" x="364" y="2454"/>
         </scene>
         <!--Tags-->
         <scene sceneID="q5A-BA-EE7">
@@ -500,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GjJ-nW-Kqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="2288"/>
+            <point key="canvasLocation" x="380" y="3226"/>
         </scene>
         <!--Home-->
         <scene sceneID="a13-rV-Kor">
@@ -564,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWz-SI-2hk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356" y="3188"/>
+            <point key="canvasLocation" x="356" y="4127"/>
         </scene>
     </scenes>
     <resources>

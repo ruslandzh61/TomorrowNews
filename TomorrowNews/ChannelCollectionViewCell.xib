@@ -35,13 +35,20 @@
                                     <constraint firstAttribute="height" constant="100" id="l3F-5I-LCK"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUW-Vt-AA5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUW-Vt-AA5">
                                 <rect key="frame" x="0.0" y="117" width="155" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7tl-gH-4bP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Category Title">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="HelveticaNeue-CondensedBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -50,7 +57,7 @@
                             <constraint firstAttribute="centerY" secondItem="ihB-yP-WxM" secondAttribute="centerY" constant="10.5" id="790-vI-rzh"/>
                             <constraint firstAttribute="centerY" secondItem="pUW-Vt-AA5" secondAttribute="centerY" constant="-50" id="7Gp-PB-iuP"/>
                             <constraint firstAttribute="trailing" secondItem="pUW-Vt-AA5" secondAttribute="trailing" id="7ne-mZ-vRa"/>
-                            <constraint firstAttribute="centerX" secondItem="ihB-yP-WxM" secondAttribute="centerX" constant="0.5" id="BZw-i9-1zl"/>
+                            <constraint firstAttribute="centerX" secondItem="ihB-yP-WxM" secondAttribute="centerX" id="BZw-i9-1zl"/>
                             <constraint firstAttribute="trailing" secondItem="ihB-yP-WxM" secondAttribute="trailing" constant="28" id="Cxd-bm-RWZ"/>
                             <constraint firstAttribute="bottom" secondItem="ihB-yP-WxM" secondAttribute="bottom" constant="27" id="Ipc-PH-o0d"/>
                             <constraint firstItem="ihB-yP-WxM" firstAttribute="leading" secondItem="vxT-TK-gT8" secondAttribute="leading" constant="27" id="PwS-L2-KYW"/>

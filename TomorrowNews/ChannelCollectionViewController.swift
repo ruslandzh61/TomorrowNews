@@ -9,13 +9,11 @@
 import UIKit
 import Alamofire
 
-let reuseIdentifier = "ChannelCollectionViewCell"
+
 
 class ChannelCollectionViewController: UICollectionViewController {
     
-    var backgroundPhotoNameArray : [String] = ["mood1.jpg", "mood2.jpg", "mood3.jpg", "mood4.jpg", "mood5.jpg", "mood6.jpg", "mood7.jpg", "mood8.jpg"]
-    var photoNameArray : [String] = ["relax.png", "playful.png", "happy.png", "adventurous.png", "wealthy.png", "hungry.png", "loved.png", "active.png"]
-    
+    private let reuseIdentifier = "ChannelCollectionViewCell"
     private var params = ["format": "json"]
     
     override func viewDidLoad() {
@@ -23,7 +21,7 @@ class ChannelCollectionViewController: UICollectionViewController {
         if User.shared.uid != nil {
             params["uid"] = User.shared.uid
         }
-        ChannelCatalogAPI.shared.load(params: params, completionHandlerForUI: { () in
+        PersonalChannelCatalogAPI.shared.load(params: params, completionHandlerForUI: { () in
             self.collectionView?.reloadData()
         })
         self.collectionView!.register(UINib(nibName: "ChannelCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -43,16 +41,17 @@ class ChannelCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ChannelCatalogAPI.shared.get().count
+        return PersonalChannelCatalogAPI.shared.get().count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ChannelCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ChannelCollectionViewCell
         
         // Configure the cell
-        cell.backgroundImageView.image = UIImage(named: backgroundPhotoNameArray[indexPath.row%backgroundPhotoNameArray.count])
-        cell.moodTitleLabel.text = ChannelCatalogAPI.shared.get()[indexPath.row].name
-        cell.moodIconImageView.image = UIImage(named: photoNameArray[indexPath.row%photoNameArray.count])
+        let channel = PersonalChannelCatalogAPI.shared.get()[indexPath.row]
+        let logoUrl = URL(string: channel.logo)
+        cell.backgroundImageView.kf.setImage(with: logoUrl)
+        cell.moodTitleLabel.text = channel.name
         
         return cell
     }

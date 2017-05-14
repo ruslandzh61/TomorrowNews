@@ -12,13 +12,15 @@ class Channel {
     let id: Int
     let user: Int
     let name: String
+    let logo: String
     let isSystemChannel: Bool
     
     init?(json: [String: Any]) {
         guard let id = json["id"] as? Int,
             let user = json["user"] as? Int,
             let name = json["name"] as? String,
-            let isSystemChannel = json["is_system_channel"] as? Bool
+            let isSystemChannel = json["is_system_channel"] as? Bool,
+            let logo = json["logo"] as? String
             else {
                 return nil
         }
@@ -27,5 +29,6 @@ class Channel {
         self.user = user
         self.name = name
         self.isSystemChannel = isSystemChannel
+        self.logo = logo
     }
 }

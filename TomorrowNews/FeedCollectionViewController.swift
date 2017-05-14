@@ -20,25 +20,37 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     
+    var text = ""
+    var utterance = AVSpeechUtterance()
+    //utterance.rate = 0.5
+    
+    let synthesizer = AVSpeechSynthesizer()
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBAction func audioButtonClicked(_ sender: UIButton) {
-        let utterance = AVSpeechUtterance(string: titleLabel.text!)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //utterance.rate = 0.5
-        
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
+        } else if synthesizer.isSpeaking {
+            print("pause")
+            synthesizer.pauseSpeaking(at: .word)
+        } else {
+            synthesizer.speak(utterance)
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func setup(date: Date?, title: String, summary: String, publisherName: String) {
+    func setup(date: Date?, title: String, summary: String, publisherName: String, text: String) {
         dateLabel.text = date?.timeAgoDisplay() ?? ""
         titleLabel.text = title
         summaryLabel.text = summary
         publisherNameLabel.text = publisherName
+        self.text = text
+        utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.45
     }
 }
 
@@ -89,7 +101,6 @@ class FeedCollectionViewController: UICollectionViewController {
             })
         } else {
             personalizedParams["channel"] = String(channel_id)
-            personalizedParams["user"] = String(User.shared.uid!)
             feeder.load(params: personalizedParams, isPersonalized: true,
                                 completionHandlerForUI: { () in
                 self.collectionView?.reloadData()
@@ -138,7 +149,7 @@ class FeedCollectionViewController: UICollectionViewController {
                 
                 if let vc = destinationViewController as? ArticleViewController {
                     //print(feeder.articles[indexPathSelected].title)
-                    vc.article = feeder.get()[indexPathSelected]
+                    vc.article = feeder.get()[indexPathSelected%feeder.get().count]
                     //vc.imageHandler = self.imageHandler
                     if User.shared.uid != nil {
                         performUserArticleInteractionRequest(article: vc.article.id)
@@ -186,7 +197,7 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
                     cell.publisherLogoImageView.kf.setImage(with: publisherLogoRUL)
                 }
                 cell.itemImageView.kf.setImage(with: url)
-                cell.setup(date: a.date, title: a.title, summary: a.summary, publisherName: a.publisherName)
+                cell.setup(date: a.date, title: a.title, summary: a.summary, publisherName: a.publisherName, text: a.text)
             }
         }
         

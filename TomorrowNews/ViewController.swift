@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orange]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
         
         // MARK: - Scroll menu setup
         
@@ -49,9 +49,6 @@ class ViewController: UIViewController {
             controllerArray.append(controller)
         }
         
-        let categoriesController: ChannelCollectionViewController = ChannelCollectionViewController(nibName: "ChannelCollectionViewController", bundle: nil)
-        categoriesController.title = "Channels"
-        controllerArray.append(categoriesController)
         // Customize menu (Optional)
         let parameters: [CAPSPageMenuOption] = [
             .scrollMenuBackgroundColor(UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)),
