@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     var pageMenu : CAPSPageMenu?
     
-    private var params = ["format": "json"]
+    private var params = ["format": "json", "type": "all"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

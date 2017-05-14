@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ChannelsViewController: UIViewController {
 
@@ -16,12 +17,23 @@ class ChannelsViewController: UIViewController {
     weak var currentViewController: UIViewController?
     private var isFollowChannelsDataLoaded = false
     private var isSmartViewDataLoaded = false
-    
+    private var smartChannels = [Channel]()
+    private var systemChannels = [Channel]()
+    private var params = ["format": "json", "type": ""]
+
     private lazy var followChannelViewController: ChannelCollectionViewController = {
         let viewController = ChannelCollectionViewController(nibName: "ChannelCollectionViewController", bundle: nil)
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.currentViewController = viewController
         print("lazy follow")
+        return viewController
+    }()
+    
+    private lazy var smartChannelViewController: ChannelCollectionViewController = {
+        let viewController = ChannelCollectionViewController(nibName: "ChannelCollectionViewController", bundle: nil)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        self.currentViewController = viewController
+        print("lazy smart channel")
         return viewController
     }()
     
@@ -40,19 +52,84 @@ class ChannelsViewController: UIViewController {
     }
     
     private func loadFollowChannels() {
-        //let request = URLRequest(url: URL(string: self.article.url)!)
-        if let vc = self.currentViewController as? ChannelCollectionViewController {
-            //print("webview")
-            //vc.webView.loadRequest(request)
-            isFollowChannelsDataLoaded = true
-        }
+        var urlString = ""
+        var systemParams = ["format": "json", "type": "system"]
+        systemParams["uid"] = User.shared.uid
+        urlString = "http://localhost:8000/newsfeed/api/v1/channels"
+        let queue = DispatchQueue(label: "response-queue", qos: .utility, attributes: [.concurrent])
+        Alamofire.request(URL(string: urlString)!, method: .get, parameters: systemParams).validate().responseJSON(queue: queue, completionHandler: { response in
+            
+            guard response.result.isSuccess else {
+                print("Error while fetching articles: \(response.result.error)")
+                return
+            }
+            
+            if let value = response.result.value {
+                if let articleArray = value as? [Any] {
+                    print("all categories: \(articleArray)")
+                    for articleJSON in articleArray {
+                        // access all objects in array
+                        let channel = Channel(json: articleJSON as! [String: Any])
+                        if channel != nil {
+                            self.systemChannels.append(channel!)
+                        }
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                if let vc = self.currentViewController as? ChannelCollectionViewController {
+                    vc.channels = self.systemChannels
+                    vc.collectionView?.reloadData()
+                    self.isFollowChannelsDataLoaded = true
+                }
+            }
+        })
+    }
+    
+    private func loadSmartChannels() {
+        var urlString = ""
+        var smartParams = ["format": "json", "type": "smart"]
+        smartParams["uid"] = User.shared.uid
+        urlString = "http://localhost:8000/newsfeed/api/v1/channels"
+        let queue = DispatchQueue(label: "response-queue", qos: .utility, attributes: [.concurrent])
+        Alamofire.request(URL(string: urlString)!, method: .get, parameters: smartParams).validate().responseJSON(queue: queue, completionHandler: { response in
+            
+            guard response.result.isSuccess else {
+                print("Error while fetching articles: \(response.result.error)")
+                return
+            }
+            
+            if let value = response.result.value {
+                if let articleArray = value as? [Any] {
+                    print("all categories: \(articleArray)")
+                    for articleJSON in articleArray {
+                        // access all objects in array
+                        let channel = Channel(json: articleJSON as! [String: Any])
+                        if channel != nil {
+                            self.smartChannels.append(channel!)
+                        }
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                if let vc = self.currentViewController as? ChannelCollectionViewController {
+                    vc.channels = self.smartChannels
+                    vc.collectionView?.reloadData()
+                    self.isSmartViewDataLoaded = true
+                }
+            }
+        })
     }
 
     @IBAction func showComponent(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: followChannelViewController)
             self.currentViewController = followChannelViewController
-        }else {
+        } else {
+            self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: smartChannelViewController)
+            self.currentViewController = smartChannelViewController
         }
         updateView()
     }
@@ -64,10 +141,11 @@ class ChannelsViewController: UIViewController {
             print("update follow")
         } else if segmentedController.selectedSegmentIndex == 1 &&
             !isSmartViewDataLoaded {
-            //setupSmartView()
-            isSmartViewDataLoaded = true
+            loadSmartChannels()
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

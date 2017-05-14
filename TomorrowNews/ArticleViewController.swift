@@ -96,6 +96,7 @@ class ArticleViewController: UIViewController {
         if segmentedControl.selectedSegmentIndex == 0 &&
             !isWebDataLoaded {
             loadWebArticle()
+            isWebDataLoaded = true
         } else if segmentedControl.selectedSegmentIndex == 1 &&
             !isSmartViewDataLoaded {
             setupSmartView()
