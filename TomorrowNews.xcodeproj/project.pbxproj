@@ -10,6 +10,9 @@
 		8414A1201EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */; };
 		8414A1221EC81EF100E1DDC9 /* ChannelPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A1211EC81EF100E1DDC9 /* ChannelPublisher.swift */; };
 		8414A1241EC8207700E1DDC9 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */; };
+		841C0B711EC8C48000C56357 /* CollectionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */; };
+		841C0B751EC8C5AA00C56357 /* UserCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B741EC8C5AA00C56357 /* UserCollection.swift */; };
+		841C0B791EC8D29800C56357 /* UserCollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */; };
 		843E9B821EC6F57C00AFF689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E9B811EC6F57C00AFF689 /* AppDelegate.swift */; };
 		843E9B841EC6F57C00AFF689 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E9B831EC6F57C00AFF689 /* ViewController.swift */; };
 		843E9B871EC6F57C00AFF689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843E9B851EC6F57C00AFF689 /* Main.storyboard */; };
@@ -62,6 +65,9 @@
 		8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowChannelsCollectionViewController.swift; sourceTree = "<group>"; };
 		8414A1211EC81EF100E1DDC9 /* ChannelPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelPublisher.swift; sourceTree = "<group>"; };
 		8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsCollectionViewController.swift; sourceTree = "<group>"; };
+		841C0B741EC8C5AA00C56357 /* UserCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollection.swift; sourceTree = "<group>"; };
+		841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		843E9B7E1EC6F57C00AFF689 /* TomorrowNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomorrowNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843E9B811EC6F57C00AFF689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		843E9B831EC6F57C00AFF689 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 				843E9BB21EC72C4600AFF689 /* WebViewController.swift */,
 				8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */,
 				8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */,
+				841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 				843E9BA71EC72C1400AFF689 /* ChannelCollectionViewCell.swift */,
 				843E9BA81EC72C1400AFF689 /* RecommendedArticle.xib */,
 				843E9BA91EC72C1400AFF689 /* RecommendedArticleView.swift */,
+				841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -252,6 +260,7 @@
 				843E9BA11EC72B2E00AFF689 /* Channel.swift */,
 				843E9BA21EC72B2E00AFF689 /* ChannelCategory.swift */,
 				8414A1211EC81EF100E1DDC9 /* ChannelPublisher.swift */,
+				841C0B741EC8C5AA00C56357 /* UserCollection.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -438,8 +447,11 @@
 				843E9BA41EC72B2E00AFF689 /* Category.swift in Sources */,
 				843E9BB41EC72C4600AFF689 /* FeedCollectionViewController.swift in Sources */,
 				843E9B841EC6F57C00AFF689 /* ViewController.swift in Sources */,
+				841C0B751EC8C5AA00C56357 /* UserCollection.swift in Sources */,
 				8414A1241EC8207700E1DDC9 /* ChannelsViewController.swift in Sources */,
+				841C0B791EC8D29800C56357 /* UserCollectionCollectionViewCell.swift in Sources */,
 				843E9BC61EC72C6400AFF689 /* User.swift in Sources */,
+				841C0B711EC8C48000C56357 /* CollectionsCollectionViewController.swift in Sources */,
 				8414A1201EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift in Sources */,
 				843E9BA61EC72B2F00AFF689 /* ChannelCategory.swift in Sources */,
 				843E9BC51EC72C6400AFF689 /* ProfileViewController.swift in Sources */,

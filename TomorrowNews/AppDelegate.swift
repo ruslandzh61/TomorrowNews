@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          window?.addSubview(statusBarBackgroundView)
          window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
          window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)*/
+        
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         

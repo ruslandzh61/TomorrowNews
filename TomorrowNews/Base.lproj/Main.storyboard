@@ -397,9 +397,9 @@
                     <connections>
                         <segue destination="1mm-jh-rH5" kind="relationship" relationship="viewControllers" id="Sm6-Dw-0vu"/>
                         <segue destination="Zav-He-iwj" kind="relationship" relationship="viewControllers" id="oOR-tg-T21"/>
-                        <segue destination="eKP-gg-gv3" kind="relationship" relationship="viewControllers" id="nGF-ML-wvO"/>
-                        <segue destination="nhY-2o-8re" kind="relationship" relationship="viewControllers" id="FaP-sa-DK4"/>
-                        <segue destination="y5X-uA-JKg" kind="relationship" relationship="viewControllers" id="vcN-XX-eK9"/>
+                        <segue destination="VwO-k1-q5K" kind="relationship" relationship="viewControllers" id="zKl-q9-XmI"/>
+                        <segue destination="nhY-2o-8re" kind="relationship" relationship="viewControllers" id="qZE-nt-8in"/>
+                        <segue destination="y5X-uA-JKg" kind="relationship" relationship="viewControllers" id="56U-3z-10t"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efs-UM-lWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -412,7 +412,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="myW-XB-O8d" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="JTb-0c-xlY"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H8i-UK-hNe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="H8i-UK-hNe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -477,23 +477,91 @@
             <point key="canvasLocation" x="8.8000000000000007" y="1235.5322338830586"/>
         </scene>
         <!--Collections-->
-        <scene sceneID="Hpo-cD-VZP">
+        <scene sceneID="syo-al-e6b">
             <objects>
-                <viewController id="eKP-gg-gv3" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pfw-PV-mfh"/>
-                        <viewControllerLayoutGuide type="bottom" id="kSu-Ly-z01"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qsh-eO-6or">
+                <collectionViewController storyboardIdentifier="CollectionsCollectionViewController" title="Collections" id="1sk-gQ-iK8" customClass="CollectionsCollectionViewController" customModule="TomorrowNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Ggw-XZ-jcZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Collections" image="Magazine-50.png" id="TMX-EB-rpy"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aTE-am-LQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bZv-Hl-m2L">
+                            <size key="itemSize" width="181" height="181"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCollectionCell" id="v70-5b-8uG" customClass="UserCollectionCollectionViewCell" customModule="TomorrowNews" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5dn-2E-IrG">
+                                            <rect key="frame" x="8" y="8" width="184" height="184"/>
+                                        </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OE-Uk-Hyh">
+                                            <rect key="frame" x="0.0" y="170" width="200" height="30"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zkd-GA-vkX">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZMO-V7-W69">
+                                                        <rect key="frame" x="8" y="5" width="184" height="21"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Label">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="24" name="HelveticaNeue-CondensedBold"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ZMO-V7-W69" firstAttribute="leading" secondItem="zkd-GA-vkX" secondAttribute="leading" constant="8" id="IXR-hx-p5K"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZMO-V7-W69" secondAttribute="trailing" constant="8" id="ZkQ-1e-fbD"/>
+                                                    <constraint firstItem="ZMO-V7-W69" firstAttribute="top" secondItem="zkd-GA-vkX" secondAttribute="top" constant="5" id="f6e-F0-LlG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZMO-V7-W69" secondAttribute="bottom" constant="4" id="qNA-V6-yXo"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="2Z5-cn-shg"/>
+                                            </constraints>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="5dn-2E-IrG" firstAttribute="top" secondItem="v70-5b-8uG" secondAttribute="topMargin" id="38o-f9-mUK"/>
+                                    <constraint firstItem="5dn-2E-IrG" firstAttribute="leading" secondItem="v70-5b-8uG" secondAttribute="leadingMargin" id="C0y-qX-Dky"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="5dn-2E-IrG" secondAttribute="bottom" id="IPe-u1-ZfB"/>
+                                    <constraint firstItem="9OE-Uk-Hyh" firstAttribute="leading" secondItem="v70-5b-8uG" secondAttribute="leading" id="Qdt-XE-Xnq"/>
+                                    <constraint firstItem="ZMO-V7-W69" firstAttribute="width" secondItem="5dn-2E-IrG" secondAttribute="width" id="Vdv-7h-O7f"/>
+                                    <constraint firstAttribute="bottom" secondItem="9OE-Uk-Hyh" secondAttribute="bottom" id="dl1-dO-KG3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="5dn-2E-IrG" secondAttribute="trailing" id="ejg-ZT-35A"/>
+                                    <constraint firstAttribute="trailing" secondItem="9OE-Uk-Hyh" secondAttribute="trailing" id="uoK-Qj-Dc9"/>
+                                </constraints>
+                                <size key="customSize" width="200" height="200"/>
+                                <connections>
+                                    <outlet property="collectionImageView" destination="5dn-2E-IrG" id="QB5-LP-TQn"/>
+                                    <outlet property="collectionTitleLabel" destination="ZMO-V7-W69" id="XH8-Wc-lp0"/>
+                                    <outlet property="visualEffectView" destination="9OE-Uk-Hyh" id="YGk-a4-HKM"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="1sk-gQ-iK8" id="F2O-b6-7w0"/>
+                            <outlet property="delegate" destination="1sk-gQ-iK8" id="2V6-L7-0ce"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="cFJ-qc-fNS"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGe-Z4-YOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="2454"/>
+            <point key="canvasLocation" x="1319.2" y="2317.6911544227887"/>
         </scene>
         <!--Tags-->
         <scene sceneID="q5A-BA-EE7">
@@ -577,6 +645,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWz-SI-2hk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="356" y="4127"/>
+        </scene>
+        <!--Collections-->
+        <scene sceneID="ngM-Ee-ebf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VwO-k1-q5K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collections" image="Magazine-50.png" id="Taw-j5-FBU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xp7-CA-1su">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1sk-gQ-iK8" kind="relationship" relationship="rootViewController" id="RIE-Fd-zvD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71i-dE-H5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="2317.6911544227887"/>
         </scene>
     </scenes>
     <resources>

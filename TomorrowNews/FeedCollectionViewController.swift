@@ -21,9 +21,7 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
     
     var text = ""
-    var utterance = AVSpeechUtterance()
-    //utterance.rate = 0.5
-    
+    var utterance = AVSpeechUtterance()    
     let synthesizer = AVSpeechSynthesizer()
     
     @IBOutlet weak var dateLabel: UILabel!
