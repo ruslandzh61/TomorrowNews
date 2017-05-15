@@ -21,16 +21,16 @@ class ChannelsViewController: UIViewController {
     private var systemChannels = [Channel]()
     private var params = ["format": "json", "type": ""]
 
-    private lazy var followChannelViewController: ChannelCollectionViewController = {
-        let viewController = ChannelCollectionViewController(nibName: "ChannelCollectionViewController", bundle: nil)
+    private lazy var followChannelViewController: ChannelsCollectionViewController = {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChannelsCollectionViewController") as! ChannelsCollectionViewController
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.currentViewController = viewController
         print("lazy follow")
         return viewController
     }()
     
-    private lazy var smartChannelViewController: ChannelCollectionViewController = {
-        let viewController = ChannelCollectionViewController(nibName: "ChannelCollectionViewController", bundle: nil)
+    private lazy var smartChannelViewController: ChannelsCollectionViewController = {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChannelsCollectionViewController") as! ChannelsCollectionViewController
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.currentViewController = viewController
         print("lazy smart channel")
@@ -78,7 +78,7 @@ class ChannelsViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                if let vc = self.currentViewController as? ChannelCollectionViewController {
+                if let vc = self.currentViewController as? ChannelsCollectionViewController {
                     vc.channels = self.systemChannels
                     vc.collectionView?.reloadData()
                     self.isFollowChannelsDataLoaded = true
@@ -114,7 +114,7 @@ class ChannelsViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                if let vc = self.currentViewController as? ChannelCollectionViewController {
+                if let vc = self.currentViewController as? ChannelsCollectionViewController {
                     vc.channels = self.smartChannels
                     vc.collectionView?.reloadData()
                     self.isSmartViewDataLoaded = true

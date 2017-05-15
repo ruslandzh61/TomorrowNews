@@ -10,6 +10,11 @@
 		8414A1201EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */; };
 		8414A1221EC81EF100E1DDC9 /* ChannelPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A1211EC81EF100E1DDC9 /* ChannelPublisher.swift */; };
 		8414A1241EC8207700E1DDC9 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */; };
+		841538E21EC979B700339ACF /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841538E11EC979B700339ACF /* MainTabBarControllerViewController.swift */; };
+		841538E41EC9D5EB00339ACF /* ChannelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841538E31EC9D5EB00339ACF /* ChannelsCollectionViewController.swift */; };
+		841538E61EC9D6C100339ACF /* UserChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841538E51EC9D6C100339ACF /* UserChannelCollectionViewCell.swift */; };
+		841538E81EC9DE1200339ACF /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841538E71EC9DE1200339ACF /* TagsViewController.swift */; };
+		841538EA1EC9DE4000339ACF /* TagsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841538E91EC9DE4000339ACF /* TagsCollectionViewController.swift */; };
 		841C0B711EC8C48000C56357 /* CollectionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */; };
 		841C0B751EC8C5AA00C56357 /* UserCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B741EC8C5AA00C56357 /* UserCollection.swift */; };
 		841C0B791EC8D29800C56357 /* UserCollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */; };
@@ -65,6 +70,11 @@
 		8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowChannelsCollectionViewController.swift; sourceTree = "<group>"; };
 		8414A1211EC81EF100E1DDC9 /* ChannelPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelPublisher.swift; sourceTree = "<group>"; };
 		8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		841538E11EC979B700339ACF /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
+		841538E31EC9D5EB00339ACF /* ChannelsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCollectionViewController.swift; sourceTree = "<group>"; };
+		841538E51EC9D6C100339ACF /* UserChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserChannelCollectionViewCell.swift; sourceTree = "<group>"; };
+		841538E71EC9DE1200339ACF /* TagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
+		841538E91EC9DE4000339ACF /* TagsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewController.swift; sourceTree = "<group>"; };
 		841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsCollectionViewController.swift; sourceTree = "<group>"; };
 		841C0B741EC8C5AA00C56357 /* UserCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollection.swift; sourceTree = "<group>"; };
 		841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +146,62 @@
 				64A2F874DC3856B5B273819B /* Pods_TomorrowNews.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		841538EB1EC9DE4900339ACF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				843E9B831EC6F57C00AFF689 /* ViewController.swift */,
+				843E9BAE1EC72C4600AFF689 /* FeedCollectionViewController.swift */,
+				843E9BB11EC72C4600AFF689 /* ArticleViewController.swift */,
+				843E9BB21EC72C4600AFF689 /* WebViewController.swift */,
+				843E9BAF1EC72C4600AFF689 /* SmartViewViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		841538EC1EC9DE5900339ACF /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				843E9BBD1EC72C6400AFF689 /* ProfileViewController.swift */,
+			);
+			name = MyProfile;
+			sourceTree = "<group>";
+		};
+		841538ED1EC9DE9000339ACF /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */,
+				841538E31EC9D5EB00339ACF /* ChannelsCollectionViewController.swift */,
+			);
+			name = Channels;
+			sourceTree = "<group>";
+		};
+		841538EE1EC9DE9800339ACF /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */,
+			);
+			name = Collections;
+			sourceTree = "<group>";
+		};
+		841538EF1EC9DEA100339ACF /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				841538E71EC9DE1200339ACF /* TagsViewController.swift */,
+				841538E91EC9DE4000339ACF /* TagsCollectionViewController.swift */,
+			);
+			name = Tags;
+			sourceTree = "<group>";
+		};
+		841538F01EC9DEE500339ACF /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				843E9BB01EC72C4600AFF689 /* ChannelCollectionViewController.xib */,
+				8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */,
+				843E9BAD1EC72C4600AFF689 /* ChannelCollectionViewController.swift */,
+			);
+			name = Unused;
 			sourceTree = "<group>";
 		};
 		843E9B751EC6F57C00AFF689 = {
@@ -224,17 +290,13 @@
 		843E9B9C1EC72AF300AFF689 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				843E9B831EC6F57C00AFF689 /* ViewController.swift */,
-				843E9BBD1EC72C6400AFF689 /* ProfileViewController.swift */,
-				843E9BAD1EC72C4600AFF689 /* ChannelCollectionViewController.swift */,
-				843E9BAE1EC72C4600AFF689 /* FeedCollectionViewController.swift */,
-				843E9BAF1EC72C4600AFF689 /* SmartViewViewController.swift */,
-				843E9BB01EC72C4600AFF689 /* ChannelCollectionViewController.xib */,
-				843E9BB11EC72C4600AFF689 /* ArticleViewController.swift */,
-				843E9BB21EC72C4600AFF689 /* WebViewController.swift */,
-				8414A11F1EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift */,
-				8414A1231EC8207700E1DDC9 /* ChannelsViewController.swift */,
-				841C0B701EC8C48000C56357 /* CollectionsCollectionViewController.swift */,
+				841538EB1EC9DE4900339ACF /* Home */,
+				841538ED1EC9DE9000339ACF /* Channels */,
+				841538EE1EC9DE9800339ACF /* Collections */,
+				841538EF1EC9DEA100339ACF /* Tags */,
+				841538EC1EC9DE5900339ACF /* MyProfile */,
+				841538F01EC9DEE500339ACF /* Unused */,
+				841538E11EC979B700339ACF /* MainTabBarControllerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -247,6 +309,7 @@
 				843E9BA81EC72C1400AFF689 /* RecommendedArticle.xib */,
 				843E9BA91EC72C1400AFF689 /* RecommendedArticleView.swift */,
 				841C0B781EC8D29800C56357 /* UserCollectionCollectionViewCell.swift */,
+				841538E51EC9D6C100339ACF /* UserChannelCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -437,10 +500,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841538E41EC9D5EB00339ACF /* ChannelsCollectionViewController.swift in Sources */,
 				843E9BC21EC72C6400AFF689 /* ArticleListConnector.swift in Sources */,
 				843E9BB31EC72C4600AFF689 /* ChannelCollectionViewController.swift in Sources */,
 				843E9BA31EC72B2E00AFF689 /* Article.swift in Sources */,
 				843E9BC71EC72C6400AFF689 /* UserChannelCatalogConnector.swift in Sources */,
+				841538E61EC9D6C100339ACF /* UserChannelCollectionViewCell.swift in Sources */,
 				843E9BA51EC72B2E00AFF689 /* Channel.swift in Sources */,
 				843E9BAA1EC72C1400AFF689 /* ChannelCollectionViewCell.swift in Sources */,
 				843E9BC81EC72C6400AFF689 /* UserChannelCatalogPersistenceManager.swift in Sources */,
@@ -454,12 +519,15 @@
 				841C0B711EC8C48000C56357 /* CollectionsCollectionViewController.swift in Sources */,
 				8414A1201EC805AE00E1DDC9 /* FollowChannelsCollectionViewController.swift in Sources */,
 				843E9BA61EC72B2F00AFF689 /* ChannelCategory.swift in Sources */,
+				841538E21EC979B700339ACF /* MainTabBarControllerViewController.swift in Sources */,
+				841538E81EC9DE1200339ACF /* TagsViewController.swift in Sources */,
 				843E9BC51EC72C6400AFF689 /* ProfileViewController.swift in Sources */,
 				843E9BC31EC72C6400AFF689 /* ArticleListPersistenceManager.swift in Sources */,
 				843E9BAC1EC72C1400AFF689 /* RecommendedArticleView.swift in Sources */,
 				843E9BB51EC72C4600AFF689 /* SmartViewViewController.swift in Sources */,
 				843E9BB71EC72C4600AFF689 /* ArticleViewController.swift in Sources */,
 				843E9BC11EC72C6400AFF689 /* ArticleListAPI.swift in Sources */,
+				841538EA1EC9DE4000339ACF /* TagsCollectionViewController.swift in Sources */,
 				8414A1221EC81EF100E1DDC9 /* ChannelPublisher.swift in Sources */,
 				843E9BC41EC72C6400AFF689 /* PersonalChannelCatalogAPI.swift in Sources */,
 				843E9BE91EC72E3A00AFF689 /* ChannelCatalogAPI.swift in Sources */,
