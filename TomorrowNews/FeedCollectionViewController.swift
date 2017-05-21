@@ -56,6 +56,7 @@ class FeedCollectionViewController: UICollectionViewController {
     
     var animator: (LayoutAttributesAnimator, Bool, Int, Int)? = (PageAttributesAnimator(), true, 1, 1)
     var direction: UICollectionViewScrollDirection = .vertical
+    var refreshControl = UIRefreshControl()
     
    // var imageHandler: ImageHandler = ImageHandler()
     var feeder = ArticleListAPI(type: .channel)
@@ -70,6 +71,15 @@ class FeedCollectionViewController: UICollectionViewController {
         collectionView?.isPagingEnabled = true
         
         super.viewDidLoad()
+        
+        if #available(iOS 10.0, *) {
+            self.collectionView?.refreshControl = refreshControl
+        } else {
+            self.collectionView?.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(FeedCollectionViewController.refreshData), for: UIControlEvents.valueChanged)
+        
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         //self.navigationController?.navigationBar.shadowImage = UIImage()
         //navigationController?.navigationBar.isTranslucent = false
@@ -87,28 +97,38 @@ class FeedCollectionViewController: UICollectionViewController {
             layout.scrollDirection = direction
             layout.animator = animator?.0
         }
+        
+        refreshData()
+        
         //collectionView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
         
-        if User.shared.uid == nil {
-            print("user is nil")
-            params["category"] = String(channel_id)
-            feeder.load(params: params, isPersonalized: false,
-                                completionHandlerForUI: { () in
-                self.collectionView?.reloadData()
-                print("reload")
-            })
-        } else {
-            personalizedParams["channel"] = String(channel_id)
-            feeder.load(params: personalizedParams, isPersonalized: true,
-                                completionHandlerForUI: { () in
-                self.collectionView?.reloadData()
-            })
-        }
-        print("\(self.channel_id) feed collection view loaded")
+        
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    func refreshData() {
+        if User.shared.uid == nil {
+            print("user is nil")
+            params["category"] = String(channel_id)
+            feeder.load(params: params, isPersonalized: false,
+                        completionHandlerForUI: { () in
+                            self.collectionView?.reloadData()
+                            print("reload")
+                            self.refreshControl.endRefreshing()
+            })
+        } else {
+            personalizedParams["channel"] = String(channel_id)
+            feeder.load(params: personalizedParams, isPersonalized: true,
+                        completionHandlerForUI: { () in
+                            self.collectionView?.reloadData()
+                            self.refreshControl.endRefreshing()
+            })
+        }
+        print("\(self.channel_id) feed collection view loaded")
+        
     }
 
     override func didReceiveMemoryWarning() {

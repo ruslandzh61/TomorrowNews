@@ -25,7 +25,9 @@ class ArticleListPersistenceManager {
     
     func add(articles: [Article]) {
         self.articles.removeAll()
+        print("before: ", self.articles)
         self.articles.append(contentsOf: articles)
+        print("after: ", self.articles)
     }
     
     func remove(at: Int) {
