@@ -116,8 +116,8 @@ class FeedCollectionViewController: UICollectionViewController {
             feeder.load(params: params, isPersonalized: false,
                         completionHandlerForUI: { () in
                             self.collectionView?.reloadData()
-                            print("reload")
                             self.refreshControl.endRefreshing()
+                            print("reload")
             })
         } else {
             personalizedParams["channel"] = String(channel_id)
