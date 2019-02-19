@@ -1,2 +1,2 @@
 # TomorrowNews
-Undegraduate Senior thesis. iOS client side code
+Undergraduate Senior Thesis. iOS client side code
